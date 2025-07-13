@@ -6,39 +6,52 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      padding: 20px;
+      background: #fff;
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     h1 {
+      width: 100%;
       text-align: center;
+      font-size: 20px;
       color: #2c3e50;
+      margin-bottom: 10px;
     }
     .semestre {
-      max-width: 1000px;
-      margin: 0 auto 50px auto;
+      flex: 0 0 180px;
+      margin: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fafafa;
+      padding: 8px;
     }
     .semestre h2 {
+      font-size: 14px;
+      margin: 0 0 5px 0;
       background-color: #2c3e50;
       color: white;
-      padding: 10px 15px;
-      border-radius: 6px;
+      padding: 4px;
+      border-radius: 4px;
+      text-align: center;
     }
     .curso {
+      font-size: 12px;
       background: white;
       border: 1px solid #ccc;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 6px;
+      padding: 6px;
+      margin: 4px 0;
+      border-radius: 4px;
       cursor: pointer;
       transition: all 0.3s ease;
-      color: #333;
     }
     .curso.tachado {
-      background-color: #e0e0e0;
+      background-color: #e0e0e0 !important;
       color: gray;
       text-decoration: line-through;
     }
-    .curso.desbloqueado {
+    .curso.desbloqueado:not(.tachado) {
       background-color: #ffe6f0;
     }
   </style>
@@ -145,17 +158,19 @@
 
 <script>
   function marcarCurso(el) {
+    // Si ya está tachado, no hacer nada
     if (el.classList.contains('tachado')) return;
 
-    // Marcar el curso actual
+    // Tachado el curso clickeado
     el.classList.add('tachado');
 
+    // Obtener el ID del curso
     const nombre = el.dataset.nombre;
 
-    // Desbloquear cursos que dependen de este
+    // Desbloquear los cursos que dependen de este (fondo rosa)
     document.querySelectorAll('.curso').forEach(curso => {
-      const requisitos = curso.dataset.requisitos;
-      if (requisitos && requisitos.split(',').includes(nombre)) {
+      const req = curso.dataset.requisitos;
+      if (req && req.split(',').includes(nombre)) {
         curso.classList.add('desbloqueado');
       }
     });
