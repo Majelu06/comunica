@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Curricular Interactiva</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .semestre {
+      max-width: 1000px;
+      margin: 0 auto 50px auto;
+    }
+    .semestre h2 {
+      background-color: #2c3e50;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+    }
+    .curso {
+      background: white;
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: #333;
+    }
+    .curso.tachado {
+      background-color: #e0e0e0;
+      color: gray;
+      text-decoration: line-through;
+    }
+    .curso.desbloqueado {
+      background-color: #ffe6f0;
+    }
+  </style>
+</head>
+<body>
+<h1>Malla Curricular - Comunicación Audiovisual</h1>
+
+<div class="semestre">
+  <h2>Ciclo 1</h2>
+  <div class="curso" data-nombre="intro" onclick="marcarCurso(this)">Introducción a la Comunicación Audiovisual</div>
+  <div class="curso" data-nombre="teorias" onclick="marcarCurso(this)">Teorías y Epistemologías de la Comunicación</div>
+  <div class="curso" data-nombre="matematica" onclick="marcarCurso(this)">Matemática General</div>
+  <div class="curso" data-nombre="lengua" onclick="marcarCurso(this)">Lengua y Comunicación</div>
+  <div class="curso" data-nombre="desempeno" onclick="marcarCurso(this)">Desempeño Universitario</div>
+  <div class="curso" data-nombre="filosofia" onclick="marcarCurso(this)">Filosofía</div>
+</div>
+
+<div class="semestre">
+  <h2>Ciclo 2</h2>
+  <div class="curso" data-nombre="fundamentos" data-requisitos="intro" onclick="marcarCurso(this)">Fundamentos de la Producción Audiovisual</div>
+  <div class="curso" data-nombre="ambiental" onclick="marcarCurso(this)">Educación Ambiental</div>
+  <div class="curso" data-nombre="psicologia" data-requisitos="lengua" onclick="marcarCurso(this)">Psicología General</div>
+  <div class="curso" data-nombre="arte" data-requisitos="filosofia" onclick="marcarCurso(this)">Apreciación del Arte Contemporáneo</div>
+  <div class="curso" data-nombre="realidad" onclick="marcarCurso(this)">Realidad Nacional</div>
+  <div class="curso" data-nombre="redaccion" data-requisitos="desempeno,lengua" onclick="marcarCurso(this)">Redacción General</div>
+  <div class="curso" data-nombre="ingles" onclick="marcarCurso(this)">Inglés</div>
+</div>
+
+<div class="semestre">
+  <h2>Ciclo 3</h2>
+  <div class="curso" data-nombre="historia" data-requisitos="fundamentos" onclick="marcarCurso(this)">Historia de los Medios de Comunicación</div>
+  <div class="curso" data-nombre="taller1" data-requisitos="intro" onclick="marcarCurso(this)">Taller de Realización Cinematográfica I</div>
+  <div class="curso" data-nombre="investigacion" data-requisitos="intro,lengua" onclick="marcarCurso(this)">Introducción a la Investigación</div>
+  <div class="curso" data-nombre="estadistica" data-requisitos="matematica" onclick="marcarCurso(this)">Estadística General</div>
+  <div class="curso" data-nombre="foto" data-requisitos="fundamentos" onclick="marcarCurso(this)">Fotografía Creativa</div>
+  <div class="curso" data-nombre="design" data-requisitos="redaccion,intro" onclick="marcarCurso(this)">Design Thinking</div>
+</div>
+
+<div class="semestre">
+  <h2>Ciclo 4</h2>
+  <div class="curso" data-nombre="taller2" data-requisitos="taller1" onclick="marcarCurso(this)">Taller de Realización Cinematográfica II</div>
+  <div class="curso" data-nombre="guion" data-requisitos="design" onclick="marcarCurso(this)">Storytelling y Guión</div>
+  <div class="curso" data-nombre="socialmedia" data-requisitos="foto" onclick="marcarCurso(this)">Social Media Filmmaking and Content Creation</div>
+  <div class="curso" data-nombre="cines" data-requisitos="historia" onclick="marcarCurso(this)">Cines del Mundo y Globalización</div>
+  <div class="curso" data-nombre="etica" data-requisitos="realidad" onclick="marcarCurso(this)">Ética y Deontología Profesional</div>
+  <div class="curso" data-nombre="mercados" data-requisitos="estadistica" onclick="marcarCurso(this)">Mercados de Medios de Comunicación</div>
+</div>
+
+<div class="semestre">
+  <h2>Ciclo 5</h2>
+  <div class="curso" data-nombre="edicion" data-requisitos="taller2" onclick="marcarCurso(this)">Edición, After Effects y Herramientas de IA</div>
+  <div class="curso" data-nombre="sonoros" data-requisitos="cines" onclick="marcarCurso(this)">Mundos Sonoros</div>
+  <div class="curso" data-nombre="graphics" data-requisitos="guion" onclick="marcarCurso(this)">Graphics y Storyboard</div>
+  <div class="curso" data-nombre="ux" data-requisitos="socialmedia" onclick="marcarCurso(this)">UX: Experiencia del Usuario y Creación de Públicos</div>
+  <div class="curso" data-nombre="metodos" data-requisitos="investigacion" onclick="marcarCurso(this)">Técnicas y Métodos de Investigación en Comunicación</div>
+  <div class="curso" data-nombre="negocios" data-requisitos="mercados" onclick="marcarCurso(this)">Negocios y Mercados del Entretenimiento</div>
+</div>
+
+<div class="semestre">
+  <h2>Ciclo 6</h2>
+  <div class="curso" data-nombre="integracion" data-requisitos="edicion" onclick="marcarCurso(this)">Diseño e Integración Creativa Avanzada</div>
+  <div class="curso" data-nombre="streaming" data-requisitos="graphics" onclick="marcarCurso(this)">Streaming en Nuevos Medios</div>
+  <div class="curso" data-nombre="vfx" data-requisitos="ux" onclick="marcarCurso(this)">Animación VFX (Virtual Effects)</div>
+  <div class="curso" data-nombre="artecolor" data-requisitos="sonoros" onclick="marcarCurso(this)">Dirección de Arte, Color e Iluminación</div>
+  <div class="curso" data-nombre="gestionproduccion" data-requisitos="negocios" onclick="marcarCurso(this)">Gestión de la Producción Cinematográfica y Medios Interactivos</div>
+  <div class="curso" data-nombre="bp" data-requisitos="negocios" onclick="marcarCurso(this)">Business Plan y TV Shows</div>
+</div>
+
+<div class="semestre">
+  <h2>Ciclo 7</h2>
+  <div class="curso" data-nombre="juegos" data-requisitos="streaming" onclick="marcarCurso(this)">Cinematografía, Juegos e Interactividad</div>
+  <div class="curso" data-nombre="apps1" data-requisitos="vfx" onclick="marcarCurso(this)">Desarrollo y Programación de Aplicaciones I</div>
+  <div class="curso" data-nombre="integracionmulti" data-requisitos="streaming" onclick="marcarCurso(this)">Taller de Integración Cinematográfica Multiplataforma</div>
+  <div class="curso" data-nombre="musica" data-requisitos="vfx" onclick="marcarCurso(this)">Musicalización y Diseño Sonoro</div>
+  <div class="curso" data-nombre="gestionrs" data-requisitos="gestionproduccion" onclick="marcarCurso(this)">Gestión de Proyectos Audiovisuales de Responsabilidad Social y Ambiental</div>
+</div>
+
+<div class="semestre">
+  <h2>Ciclo 8</h2>
+  <div class="curso" data-nombre="camaras" data-requisitos="integracionmulti" onclick="marcarCurso(this)">Taller de Lenguaje de Cámaras</div>
+  <div class="curso" data-nombre="animacion3d" data-requisitos="musica,apps1" onclick="marcarCurso(this)">Animación 3D</div>
+  <div class="curso" data-nombre="planrodaje" data-requisitos="bp" onclick="marcarCurso(this)">Plan de Producción y Rodaje</div>
+  <div class="curso" data-nombre="inclusion" data-requisitos="gestionrs" onclick="marcarCurso(this)">Gestión de Proyectos Audiovisuales para Diversidad e Inclusión</div>
+  <div class="curso" data-nombre="esports" data-requisitos="juegos" onclick="marcarCurso(this)">eSports e Industrias del Juego</div>
+</div>
+
+<div class="semestre">
+  <h2>Ciclo 9</h2>
+  <div class="curso" data-nombre="reality" data-requisitos="planrodaje" onclick="marcarCurso(this)">Producción de Reality TV</div>
+  <div class="curso" data-nombre="ia" data-requisitos="integracionmulti" onclick="marcarCurso(this)">Inteligencia Artificial y Algoritmos en la Posproducción</div>
+  <div class="curso" data-nombre="psicoproduccion" data-requisitos="psicologia,esports" onclick="marcarCurso(this)">Psicología de la Producción</div>
+  <div class="curso" data-nombre="tesis" data-requisitos="inclusion,metodos" onclick="marcarCurso(this)">Seminario de Tesis</div>
+  <div class="curso" data-nombre="marketing" data-requisitos="planrodaje" onclick="marcarCurso(this)">Programación y Marketing Audiovisual</div>
+</div>
+
+<div class="semestre">
+  <h2>Ciclo 10</h2>
+  <div class="curso" data-nombre="seriestv" data-requisitos="reality" onclick="marcarCurso(this)">Producción de Series de TV</div>
+  <div class="curso" data-nombre="legal" data-requisitos="reality" onclick="marcarCurso(this)">Legislación en Industrias del Entretenimiento y Prácticas de Negocio</div>
+  <div class="curso" data-nombre="pitching" data-requisitos="marketing" onclick="marcarCurso(this)">Advanced Pitching Workshop</div>
+  <div class="curso" data-nombre="financiamiento" data-requisitos="psicoproduccion" onclick="marcarCurso(this)">Financiamiento y Comercialización Audiovisual</div>
+  <div class="curso" data-nombre="trabajo" data-requisitos="tesis" onclick="marcarCurso(this)">Trabajo de Investigación</div>
+</div>
+
+<script>
+  function marcarCurso(el) {
+    if (el.classList.contains('tachado')) return;
+
+    // Marcar el curso actual
+    el.classList.add('tachado');
+
+    const nombre = el.dataset.nombre;
+
+    // Desbloquear cursos que dependen de este
+    document.querySelectorAll('.curso').forEach(curso => {
+      const requisitos = curso.dataset.requisitos;
+      if (requisitos && requisitos.split(',').includes(nombre)) {
+        curso.classList.add('desbloqueado');
+      }
+    });
+  }
+</script>
+</body>
+</html>
